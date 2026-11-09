@@ -40,6 +40,19 @@ footer{text-align:center;color:#8589a7;font-size:12px;padding:25px}
 @media(max-width:900px){.mini-features{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.head{align-items:flex-start;flex-direction:column}.nav{justify-content:flex-start}.mini-features{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}.statsgrid{grid-template-columns:1fr 1fr}.shell{padding:20px}.brand b{font-size:15px}}
 @media print{header,.no-print,footer{display:none!important}body{background:white}.shell{box-shadow:none;border:0}main{margin:0;padding:0}}
+
+/* 전체 디지털 놀이교사 유형 분포도도: 한눈에 비교하는 카드형 막대 그래프 */
+.dist-list{display:grid;gap:12px;margin-top:16px}
+.dist-item{display:grid;grid-template-columns:42px minmax(90px,150px) 1fr 82px;align-items:center;gap:12px;padding:13px 15px;border:1px solid #ece8fa;border-radius:15px;background:#fff}
+.dist-emoji{font-size:27px;text-align:center}
+.dist-name{font-weight:800;color:#25234a}
+.dist-track{height:13px;border-radius:99px;background:#f0eef7;overflow:hidden}
+.dist-fill{height:100%;width:0;border-radius:99px;transition:width .5s ease;background:linear-gradient(90deg,#8c83f4,#63cdb8)}
+.dist-value{text-align:right;font-size:13px;color:#5d5a78;font-weight:700;white-space:nowrap}
+.dist-value strong{font-size:17px;color:#302c6c;margin-right:3px}
+.dist-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:13px;color:#77738f;font-size:12px}
+@media(max-width:650px){.dist-item{grid-template-columns:34px 1fr 70px;gap:8px;padding:11px}.dist-track{grid-column:2/3;grid-row:2}.dist-value{grid-column:3;grid-row:1/3}.dist-name{font-size:14px}}
+
 </style></head>
 <body>
 <header><div class="head">
@@ -103,7 +116,7 @@ footer{text-align:center;color:#8589a7;font-size:12px;padding:25px}
   <h3>🎯 나에게 맞는 수업 아이디어 찾기</h3>
   <div class="selectrow">
    <select class="select" id="ideaSchool"><option value="유치원">유치원</option><option value="초등학교">초등학교</option><option value="특수/기타">특수/기타</option></select>
-   <select class="select" id="ideaType"><option value="all">모든 동물 유형</option><option value="cat">🐱 고양이형</option><option value="dog">🐶 강아지형</option><option value="rabbit">🐰 토끼형</option><option value="octopus">🐙 문어형</option><option value="turtle">🐢 거북이형</option></select>
+   <select class="select" id="ideaType"><option value="all">모든 디지털 놀이교사 유형</option><option value="cat">🐱 고양이형</option><option value="dog">🐶 강아지형</option><option value="rabbit">🐰 토끼형</option><option value="octopus">🐙 문어형</option><option value="turtle">🐢 거북이형</option></select>
    <button class="primary" id="drawIdea">맞춤 영감 발견하기 ✨</button>
   </div>
   <div class="idea-box"><div style="font-size:38px">🪄</div><div class="idea-result" id="ideaResult">학교급과 교사 유형을 선택하고 수업 영감을 발견해 보세요.</div><div class="muted" id="ideaHint">교육청 자료의 취지를 바탕으로 교실 맥락에 맞게 응용한 아이디어예요.</div></div>
@@ -180,7 +193,7 @@ footer{text-align:center;color:#8589a7;font-size:12px;padding:25px}
 </div></section>
 
 <section class="view" id="match"><div class="shell">
- <h2 class="section-title">🤝 협업 메이트 찾기</h2><p class="section-sub">두 선생님의 동물 유형을 선택하면 함께할 때 빛나는 강점과 협력 아이디어를 알려드려요.</p>
+ <h2 class="section-title">🤝 협업 메이트 찾기</h2><p class="section-sub">두 선생님의 디지털 놀이교사 유형을 선택하면 함께할 때 빛나는 강점과 협력 아이디어를 알려드려요.</p>
  <div class="selectrow"><select class="select" id="matchA"><option value="cat">🐱 고양이형</option><option value="dog">🐶 강아지형</option><option value="rabbit">🐰 토끼형</option><option value="octopus">🐙 문어형</option><option value="turtle">🐢 거북이형</option></select><span style="font-weight:900;color:#d88a28">＋</span><select class="select" id="matchB"><option value="dog">🐶 강아지형</option><option value="cat">🐱 고양이형</option><option value="rabbit">🐰 토끼형</option><option value="octopus">🐙 문어형</option><option value="turtle">🐢 거북이형</option></select><button class="primary" id="matchBtn">우리 궁합 보기 💗</button></div>
  <div class="compat" id="matchResult">두 유형을 선택하고 궁합을 확인해 보세요!</div><div class="note">궁합은 재미와 협력 아이디어를 위한 콘텐츠이며 실제 관계나 업무 능력을 평가하지 않아요.</div>
 </div></section>
@@ -188,7 +201,7 @@ footer{text-align:center;color:#8589a7;font-size:12px;padding:25px}
 <section class="view" id="stats"><div class="shell">
  <h2 class="section-title">📊 우리들의 유형 현황판</h2><p class="section-sub">여러 선생님이 휴대폰으로 참여한 결과가 한곳에 모이는 공동 현황판이에요.</p><div class="note" id="dbStatus">데이터베이스 연결 설정이 필요해요.</div>
  <div class="statsgrid"><div class="stat"><b id="totalCount">0</b><span>누적 검사 참여</span></div><div class="stat"><b id="topType">-</b><span>가장 많이 나온 유형</span></div><div class="stat"><b id="schoolCount">0</b><span>참여 학교급</span></div></div>
- <div class="subpanel"><h3>전체 동물 유형 분포</h3><div id="statsBars"></div></div>
+ <div class="subpanel"><h3>전체 디지털 놀이교사 유형 분포도</h3><div id="statsBars"><p class="muted">검사 결과가 모이면 다섯 가지 디지털 놀이교사 유형별 인원과 비율이 표시돼요.</p></div></div>
  <div class="subpanel" style="margin-top:15px"><h3>🏫 학교급별 유형 비교</h3><p class="muted">유치원 · 초등학교 · 특수/기타 선생님들의 동물 유형 분포를 비교해요.</p><div id="schoolCompare"></div></div>
  <div class="note">이름이나 연락처는 저장하지 않으며, 학교급·대표 유형·유형별 점수만 익명으로 저장해요.</div>
  <div class="result-actions no-print"><button class="ghost" id="exportStats">현황 CSV 내려받기</button><button class="ghost" id="resetStats">이 기기 기록 초기화</button></div>
@@ -258,49 +271,68 @@ function renderTypes(){$('typeGrid').innerHTML=ids.map((id,i)=>{let t=types[id];
 function start(){nickname='';index=0;answers=[];go('quiz');renderQuestion();}
 function renderQuestion(){let q=questions[index];$('qnumber').textContent=`QUESTION ${String(index+1).padStart(2,'0')} / ${questions.length}`;$('qpercent').textContent=Math.round((index+1)/questions.length*100)+'%';$('qfill').style.width=((index+1)/questions.length*100)+'%';$('qtitle').textContent=q[0];$('options').innerHTML='';let order=[0,1,2,3,4].map(x=>(x+index*2)%5);order.forEach(k=>{let b=document.createElement('button');b.className='option';b.textContent=q[1][k];b.addEventListener('click',()=>{answers[index]=ids[k];if(index<questions.length-1){index++;renderQuestion();}else finish();});$('options').appendChild(b);});$('prev').disabled=index===0;}
 $('start').addEventListener('click',start);$('prev').addEventListener('click',()=>{if(index>0){index--;renderQuestion();}});
-function finish(){let scores=Object.fromEntries(ids.map(id=>[id,0]));answers.forEach(a=>scores[a]++);let sorted=[...ids].sort((a,b)=>scores[b]-scores[a]||ids.indexOf(a)-ids.indexOf(b));let best=sorted[0],t=types[best];latest={best,scores,sorted,nickname,grade,at:new Date().toISOString()};$('resultWho').textContent=(nickname?nickname+' 선생님의 ':'나의 ')+ '디지털 놀이 교사 유형';$('resultImage').src=ART[ids.indexOf(best)];$('resultAnimal').textContent=t.animal;$('resultName').textContent=t.name;$('resultLine').textContent=t.line;$('resultDesc').textContent=t.desc;$('resultKeys').innerHTML=t.keys.map(k=>`<span class="chip">#${k}</span>`).join('');$('resultTip').textContent='성장 아이디어 · '+t.tip;$('resultBars').innerHTML=sorted.map(id=>`<div class="barrow"><span>${types[id].emoji} ${types[id].animal.replace('형','')}</span><div class="bar"><i style="width:${scores[id]/questions.length*100}%"></i></div><b>${scores[id]}</b></div>`).join('');let tie=scores[sorted[0]]===scores[sorted[1]];$('resultNote').textContent=`담당 연령: ${grade} · 응답 ${questions.length}개 완료`+(tie?' · 대표 유형 점수가 동점이에요. 상위 유형들을 함께 참고해 주세요.':'')+' · 이 검사는 자기성찰을 위한 참고용이며 표준화된 심리검사는 아니에요.';saveResult(latest);go('result');}
+async function finish(){let scores=Object.fromEntries(ids.map(id=>[id,0]));answers.forEach(a=>scores[a]++);let sorted=[...ids].sort((a,b)=>scores[b]-scores[a]||ids.indexOf(a)-ids.indexOf(b));let best=sorted[0],t=types[best];latest={best,scores,sorted,nickname,grade,at:new Date().toISOString()};$('resultWho').textContent=(nickname?nickname+' 선생님의 ':'나의 ')+ '디지털 놀이 교사 유형';$('resultImage').src=ART[ids.indexOf(best)];$('resultAnimal').textContent=t.animal;$('resultName').textContent=t.name;$('resultLine').textContent=t.line;$('resultDesc').textContent=t.desc;$('resultKeys').innerHTML=t.keys.map(k=>`<span class="chip">#${k}</span>`).join('');$('resultTip').textContent='성장 아이디어 · '+t.tip;$('resultBars').innerHTML=sorted.map(id=>`<div class="barrow"><span>${types[id].emoji} ${types[id].animal.replace('형','')}</span><div class="bar"><i style="width:${scores[id]/questions.length*100}%"></i></div><b>${scores[id]}</b></div>`).join('');let tie=scores[sorted[0]]===scores[sorted[1]];$('resultNote').textContent=`담당 연령: ${grade} · 응답 ${questions.length}개 완료`+(tie?' · 대표 유형 점수가 동점이에요. 상위 유형들을 함께 참고해 주세요.':'')+' · 이 검사는 자기성찰을 위한 참고용이며 표준화된 심리검사는 아니에요.';await saveResult(latest);go('result');}
 
 async function saveResult(r){
- if(!db){ sessionResults.push({best:r.best,grade:r.grade,at:r.at,scores:r.scores}); return; }
- const { error } = await db.from('teacher_type_results').insert({
-   best_type:r.best, school_level:r.grade, scores:r.scores
- });
- if(error){
-   $('resultNote').textContent += ' · 결과 저장에 실패했어요. 연결 설정을 확인해 주세요.';
-   console.error(error);
- } else {
-   $('resultNote').textContent += ' · 전체 현황판에 익명 결과가 반영됐어요.';
+ if(!db){
+   $('resultNote').textContent += ' · Supabase 연결 설정이 없어 이 결과는 저장되지 않았어요.';
+   return false;
+ }
+ $('resultNote').textContent += ' · 결과 저장 중…';
+ try{
+   const { error } = await db.from('teacher_type_results').insert({
+     best_type:r.best, school_level:r.grade, scores:r.scores
+   });
+   if(error){
+     $('resultNote').textContent = $('resultNote').textContent.replace(' · 결과 저장 중…','')+
+       ` · 저장 실패(${error.code||'오류'}): ${error.message}`;
+     console.error('Supabase insert error:',error);
+     return false;
+   }
+   $('resultNote').textContent = $('resultNote').textContent.replace(' · 결과 저장 중…','')+
+     ' · 전체 현황판에 익명 결과가 반영됐어요.';
+   return true;
+ }catch(e){
+   $('resultNote').textContent = $('resultNote').textContent.replace(' · 결과 저장 중…','')+
+     ` · 저장 오류: ${e.message||e}`;
+   console.error(e);
+   return false;
  }
 }
-async function readResults(){return sessionResults;}
 async function renderStats(){
  if(!db){
-   $('dbStatus').textContent='아직 데이터베이스 연결 전이에요. Supabase 프로젝트 URL과 anon key를 설정하면 공동 현황판으로 전환돼요.';
-   let all=sessionResults;
-   return renderLocalStats(all);
+   $('dbStatus').textContent='Supabase 연결 설정이 없어 공동 통계를 불러올 수 없어요.';
+   renderLocalStats(sessionResults);
+   return;
  }
  $('dbStatus').textContent='공동 현황판 데이터를 불러오는 중이에요…';
- const { data, error } = await db.rpc('get_teacher_type_stats');
- if(error){
-   $('dbStatus').textContent='데이터를 불러오지 못했어요. Supabase SQL 설정과 연결 정보를 확인해 주세요.';
-   console.error(error); return;
+ try{
+   const { data, error } = await db.rpc('get_teacher_type_stats');
+   if(error) throw error;
+   const counts=data?.type_counts||{};
+   const bySchool=data?.school_counts||{};
+   const schools=['유치원','초등학교','특수/기타'];
+   const total=ids.reduce((n,id)=>n+Number(counts[id]||0),0);
+   const top=[...ids].sort((a,b)=>Number(counts[b]||0)-Number(counts[a]||0))[0];
+   $('totalCount').textContent=total;
+   $('topType').textContent=total?types[top].emoji+' '+types[top].animal:'아직 없음';
+   $('schoolCount').textContent=schools.filter(s=>Number((bySchool[s]||{})._total||0)>0).length+'/3';
+   $('statsBars').className='dist-list';
+   $('statsBars').innerHTML=ids.map((id,i)=>{
+     const n=Number(counts[id]||0), pct=total?Math.round(n/total*100):0;
+     return `<div class="dist-item"><div class="dist-emoji">${types[id].emoji}</div><div class="dist-name">${types[id].animal}</div><div class="dist-track"><div class="dist-fill" style="width:${pct}%"></div></div><div class="dist-value"><strong>${n}</strong>명 · ${pct}%</div></div>`;
+   }).join('')+`<div class="dist-foot"><span>전체 참여 ${total}명 기준</span><span>디지털 놀이교사 유형별 참여 인원과 비율</span></div>`;
+   $('schoolCompare').innerHTML=schools.map(s=>{
+     const row=bySchool[s]||{}, n=Number(row._total||0);
+     return `<div style="padding:13px 0;border-top:1px solid #eceaf7"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:9px"><b>${s}</b><span class="muted">참여 ${n}명</span></div>`+
+       ids.map(id=>{const v=Number(row[id]||0),p=n?Math.round(v/n*100):0;return `<div class="barrow"><span>${types[id].emoji} ${types[id].animal.replace('형','')}</span><div class="bar"><i style="width:${p}%;background:linear-gradient(90deg,#b9f0dc,#7168d9)"></i></div><b>${v}명 (${p}%)</b></div>`;}).join('')+
+       (n?'':`<p class="muted">아직 참여 결과가 없어요.</p>`)+`</div>`;
+   }).join('');
+   $('dbStatus').textContent='연결 완료 · 여러 기기의 익명 검사 결과를 함께 집계하고 있어요.';
+ }catch(error){
+   $('dbStatus').textContent=`통계 불러오기 실패 (${error.code||'오류'}): ${error.message||error}. Supabase 설정을 확인해 주세요.`;
+   console.error('Supabase stats error:',error);
  }
- $('dbStatus').textContent='연결 완료 · 여러 기기의 익명 검사 결과를 함께 집계하고 있어요.';
- const counts=data.type_counts||{};
- const bySchool=data.school_counts||{};
- const schools=['유치원','초등학교','특수/기타'];
- const total=ids.reduce((n,id)=>n+(counts[id]||0),0);
- const top=[...ids].sort((a,b)=>(counts[b]||0)-(counts[a]||0))[0];
- $('totalCount').textContent=total;
- $('topType').textContent=total?types[top].emoji+' '+types[top].animal:'-';
- $('schoolCount').textContent=schools.filter(s=>schools.some(x=>x===s)&&(bySchool[s]||{})._total>0).length+'/3';
- $('statsBars').innerHTML=ids.map(id=>`<div class="barrow"><span>${types[id].emoji} ${types[id].animal}</span><div class="bar"><i style="width:${total?(counts[id]||0)/total*100:0}%"></i></div><b>${counts[id]||0}</b></div>`).join('');
- $('schoolCompare').innerHTML=schools.map(s=>{
-  const row=bySchool[s]||{}, n=row._total||0;
-  return `<div style="padding:13px 0;border-top:1px solid #eceaf7"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:9px"><b>${s}</b><span class="muted">참여 ${n}명</span></div>`+
-  ids.map(id=>`<div class="barrow"><span>${types[id].emoji} ${types[id].animal.replace('형','')}</span><div class="bar"><i style="width:${n?(row[id]||0)/n*100:0}%;background:linear-gradient(90deg,#b9f0dc,#7168d9)"></i></div><b>${row[id]||0}</b></div>`).join('')+
-  (n?`<p class="muted">학교급 내 비율: ${ids.map(id=>types[id].animal.replace('형','')+' '+Math.round((row[id]||0)/n*100)+'%').join(' · ')}</p>`:`<p class="muted">아직 참여 결과가 없어요.</p>`)+`</div>`;
- }).join('');
 }
 function renderLocalStats(all){
  let counts=Object.fromEntries(ids.map(id=>[id,0]));
@@ -313,6 +345,63 @@ function renderLocalStats(all){
  $('statsBars').innerHTML=ids.map(id=>`<div class="barrow"><span>${types[id].emoji} ${types[id].animal}</span><div class="bar"><i style="width:${all.length?counts[id]/all.length*100:0}%"></i></div><b>${counts[id]}</b></div>`).join('');
  $('schoolCompare').innerHTML=schools.map(s=>{let n=Object.values(bySchool[s]).reduce((a,b)=>a+b,0);return `<div style="padding:13px 0;border-top:1px solid #eceaf7"><b>${s}</b> · 참여 ${n}명</div>`}).join('');
 }
+
+// 맞춤 수업 영감 버튼: 학교급과 교사 유형에 맞는 추천 활동을 화면에 표시
+const schoolIdeaAdjustments = {
+ '유치원':'유아가 직접 선택하고 놀이로 충분히 탐색하도록 구성해 보세요.',
+ '초등학교':'탐구 질문, 기록, 모둠 협력과 결과 공유를 포함해 확장해 보세요.',
+ '특수/기타':'감각·의사소통·신체 특성을 고려하고 다양한 참여 방식과 보조 자료를 마련해 보세요.'
+};
+const ideaSteps = {
+ cat:'① 교실이나 바깥에서 궁금한 대상을 스스로 고르기 ② 사진·소리 등으로 관찰 흔적 남기기 ③ 발견한 점을 비교하고 질문 만들기',
+ dog:'① 친구와 함께할 주제 정하기 ② 역할을 나누어 사진·이야기 모으기 ③ 서로의 생각을 듣고 하나의 공동 결과물 만들기',
+ rabbit:'① 짧고 분명한 놀이 미션 정하기 ② 필요한 도구와 순서를 정해 실행하기 ③ 결과를 돌아보고 다음 도전 정하기',
+ octopus:'① 표현할 주제 정하기 ② 사진·음성·그림·영상 중 알맞은 매체 고르기 ③ 여러 표현을 연결해 작품이나 이야기 완성하기',
+ turtle:'① 디지털 도구를 사용할 목적과 약속 정하기 ② 짧게 탐색한 뒤 실제 놀이·관찰로 이어가기 ③ 안전과 균형을 돌아보기'
+};
+$('drawIdea').addEventListener('click',()=>{
+ const school=$('ideaSchool').value, typeId=$('ideaType').value;
+ const selected=typeId==='all'?ids:[typeId];
+ const cards=selected.map(id=>{
+   const t=types[id], pool=ideas[id]||[];
+   const idea=pool[0]||'우리 교실 디지털 탐구 프로젝트';
+   return `<article style="text-align:left;background:#fff;border:1px solid #e8e3fb;border-radius:14px;padding:16px;margin:8px 0">
+     <div class="result-kicker">${t.emoji} ${t.animal} · ${t.name}</div>
+     <h3 style="margin:7px 0;color:#282454">${idea}</h3>
+     <p><b>이 유형의 강점을 살리는 흐름</b><br>${ideaSteps[id]}</p>
+     <p><b>${school} 적용 팁</b><br>${schoolIdeaAdjustments[school]}</p>
+     <p class="muted">교사의 질문: ${id==='cat'?'“무엇을 새롭게 발견했니?”':id==='dog'?'“친구와 어떻게 함께 만들 수 있을까?”':id==='rabbit'?'“지금 바로 시작하려면 무엇부터 하면 될까?”':id==='octopus'?'“어떤 표현을 더하면 생각이 잘 전달될까?”':'“디지털 경험과 실제 놀이를 어떻게 균형 있게 연결할까?”'}</p>
+   </article>`;
+ }).join('');
+ $('ideaResult').innerHTML=cards;
+ $('ideaHint').textContent=`${school} · ${typeId==='all'?'다섯 유형 전체':types[typeId].animal+' 맞춤'} 추천이에요. 교실 상황과 유아의 흥미에 맞게 조정해 활용하세요.`;
+});
+
+// 협업 메이트 궁합 버튼: 두 유형의 강점, 조합 설명, 공동 활동을 표시
+$('matchBtn').addEventListener('click',()=>{
+ const a=$('matchA').value,b=$('matchB').value;
+ const ta=types[a],tb=types[b];
+ const pair=[a,b].sort().join('-');
+ const note=a===b
+   ? `${ta.name} 두 분이 만나면 같은 강점을 깊게 발전시킬 수 있어요. 다만 익숙한 방식에만 머물지 않도록 서로 다른 역할이나 관점을 의식적으로 나눠 보세요.`
+   : (pairNotes[pair]||`${ta.name}과 ${tb.name}의 강점이 만나 서로의 빈틈을 보완하고 새로운 수업 가능성을 만들 수 있어요.`);
+ const roles = a===b
+   ? `두 분이 번갈아 놀이 기획자와 기록자 역할을 맡고, 활동 후 서로 다른 관찰을 나눠 보세요.`
+   : `${ta.animal}은(는) ${ta.strength}을(를) 맡고, ${tb.animal}은(는) ${tb.strength}을(를) 보태면 좋아요.`;
+ const challenge = a===b
+   ? '같은 유형 안에서도 서로 다른 관심 주제를 하나씩 제안해 결합해 보세요.'
+   : '기획 단계에서 “유아의 선택과 주도성이 충분히 살아 있는가?”를 함께 점검해 보세요.';
+ $('matchResult').innerHTML=`<div style="font-size:34px;margin-bottom:8px">${ta.emoji} <span style="font-size:20px">＋</span> ${tb.emoji}</div>
+   <div class="result-kicker">협업 조합 · ${ta.animal} × ${tb.animal}</div>
+   <h3 style="margin:8px 0;color:#292653">${ta.name} ＋ ${tb.name}</h3>
+   <p>${note}</p>
+   <div style="text-align:left;background:#fff;border:1px solid #ece7fa;border-radius:13px;padding:14px;margin-top:12px">
+     <b>함께 빛나는 역할</b><p>${roles}</p>
+     <b>추천 협업 미션</b><p>두 유형의 강점을 합쳐 ‘우리 반 디지털 놀이 기록 전시’ 만들기: 놀이 주제 정하기 → 역할 나누기 → 유아의 과정 기록하기 → 함께 돌아보고 공유하기.</p>
+     <b>함께 생각할 질문</b><p>${challenge}</p>
+   </div>`;
+});
+
 $('resetStats').style.display='none';
 $('exportStats').style.display='none';
 renderHomeAnimals();renderTypes();

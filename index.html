@@ -67,7 +67,7 @@ footer{text-align:center;color:#8589a7;font-size:12px;padding:25px}
   <div class="hero">
    <span class="eyebrow">✦ 2026. 유초등 수업나눔 페스타</span>
    <h1>나는 교실 속 어떤<br><span class="accent">디지털 놀이 교사</span>일까?</h1>
-   <p class="lead">15가지 교실 상황을 통해 나의 디지털 놀이 관점과 실천 스타일을 발견해요.<br>나와 닮은 동물 캐릭터를 발견하고, 새로운 수업 영감과 협업 아이디어를 만나 보세요! ✨</p>
+   <p class="lead">15가지 교실 상황에서 나의 선택을 돌아보며 디지털 놀이 실천 스타일을 발견해요.<br>나와 닮은 동물 캐릭터를 발견하고, 새로운 수업 영감과 협업 아이디어를 만나 보세요! ✨</p>
   </div>
   <div class="homeform">
    <label for="nickname">선생님 성함 또는 닉네임</label><input class="input" id="nickname" maxlength="24" placeholder="예: 반짝이는 선생님 (선택)">
@@ -90,7 +90,7 @@ footer{text-align:center;color:#8589a7;font-size:12px;padding:25px}
  <div class="quiz-top"><span id="qnumber">QUESTION 01 / 15</span><span id="qpercent">7%</span></div><div class="progress"><div id="qfill"></div></div>
  <div class="result-kicker">교실 속 나의 선택</div><h2 class="qtitle" id="qtitle"></h2>
  <div class="options" id="options"></div>
- <div class="quiz-actions"><button class="ghost" id="prev">← 이전 질문</button><span class="muted">가장 나다운 선택 하나</span></div>
+ <div class="quiz-actions"><button class="ghost" id="prev">← 이전 질문</button><span class="muted">실제 교실에서 내가 할 법한 선택 하나</span></div>
 </div></section>
 
 <section class="view" id="result"><div class="shell">
@@ -225,21 +225,36 @@ octopus:{emoji:'🐙',animal:'문어형',name:'디지털 멀티플레이어',lin
 turtle:{emoji:'🐢',animal:'거북이형',name:'균형 있는 조절자',line:'유아의 발달과 디지털 경험의 균형을 지키는 안내자',desc:'디지털 도구의 가능성을 인정하면서도 유아의 발달, 안전, 신체 놀이와의 균형을 함께 생각해요. 꼭 필요한 순간에 적절하게 활용하고 경험을 차분히 돌아보는 편이에요.',keys:['균형','신중함','안전','지속성'],strength:'디지털 경험과 실제 놀이, 안전과 몰입의 균형을 살피는 힘',tip:'신중함을 바탕으로 작게 시도해 보고, 효과가 있는 방법은 꾸준히 이어 가 보세요.',color:'#eaf8e7'}
 };
 const questions=[
-['새로운 디지털 도구를 알게 되었을 때 나는?',['일단 눌러 보고 숨은 기능을 탐색한다','동료나 유아와 함께 써 볼 방법을 생각한다','수업에 적용할 활동을 빠르게 구상한다','기존 도구와 연결할 수 있는지 살핀다','교육적 필요와 안전성을 먼저 확인한다']],
-['유아가 태블릿으로 자유롭게 놀이한다면?',['스스로 발견하고 시도하도록 지켜본다','친구와 함께 이야기하고 나누도록 돕는다','간단한 미션을 제안해 놀이를 시작한다','사진·소리·그림 등 표현을 확장하도록 돕는다','사용 시간과 실제 놀이의 균형을 살핀다']],
-['예상하지 못한 오류가 생기면?',['다른 기능을 눌러 원인을 탐색한다','함께 해결 방법을 찾아본다','가능한 대안을 정해 바로 진행한다','다른 앱이나 도구를 조합해 해결한다','활동을 멈추고 안전하게 점검한다']],
-['디지털 놀이를 계획할 때 가장 먼저 떠오르는 것은?',['아이들이 무엇을 새롭게 발견할까?','누구와 어떤 이야기를 나눌까?','어떤 활동으로 바로 실천할까?','어떤 매체를 연결하면 풍부해질까?','유아에게 적절하고 균형 잡힌 경험일까?']],
-['유아가 사진을 찍고 싶다고 한다면?',['무엇을 찍고 싶은지 자유롭게 탐색하게 한다','친구와 사진을 소개하며 대화하게 한다','사진 미션을 만들어 실행한다','사진에 소리나 그림을 더해 표현하게 한다','촬영 약속과 주변 상황을 먼저 살핀다']],
-['놀이 기록을 공유할 때 나는?',['뜻밖의 발견과 흥미로운 장면을 찾는다','유아와 가정의 반응 및 대화를 중시한다','핵심 내용을 빠르게 정리해 공유한다','사진·영상·음성 등 여러 매체를 활용한다','필요한 정보만 신중하게 공유한다']],
-['교사 연수에서 가장 끌리는 것은?',['새로운 앱을 자유롭게 체험하는 시간','동료와 사례를 나누는 시간','바로 써 볼 활동을 완성하는 시간','여러 도구를 연계해 보는 시간','교육적 효과와 유의점을 검토하는 시간']],
-['디지털 도구를 고를 때 가장 중요하게 생각하는 것은?',['새로운 것을 발견할 수 있는 가능성','함께 참여하고 소통하는 기능','쉽고 빠르게 실행할 수 있는 편리함','다른 도구와 연결되는 확장성','안전성과 발달 적합성']],
-['유아가 만든 디지털 작품을 보면?',['독특한 표현과 새로운 발견을 찾아본다','친구들과 소개하고 서로 감상하게 한다','다음 제작 활동으로 연결한다','다른 매체로 확장할 방법을 찾는다','제작 과정과 실제 경험의 균형을 돌아본다']],
-['활동 시간이 부족해지면 나는?',['아이들의 흥미가 향하는 부분을 살핀다','아이들과 무엇을 이어 갈지 의논한다','핵심 활동을 추려 바로 진행한다','더 간단한 도구로 전환하거나 조합한다','무리하지 않고 다음 놀이로 이어 간다']],
-['디지털 놀이에서 교사의 역할은?',['탐색을 자극하는 질문자','관계와 협력을 돕는 연결자','실행을 돕는 기획자','표현을 넓히는 융합 조력자','균형을 살피는 안내자']],
-['아이들이 새로운 기능을 발견했다면?',['함께 더 깊이 실험해 본다','친구들에게 알려 주도록 돕는다','새 기능으로 할 놀이를 바로 정한다','다른 도구와 결합해 본다','놀이 목적에 맞는지 함께 확인한다']],
-['디지털 놀이를 준비하는 내 모습은?',['새로운 사례를 찾아보고 시험한다','유아의 관계와 협력 장면을 상상한다','순서와 준비물을 빠르게 정리한다','활용할 도구를 여러 개 조합한다','교육적 필요성과 안전을 점검한다']],
-['놀이가 끝난 뒤 가장 먼저 돌아보는 것은?',['새롭게 발견한 유아의 관심','함께 나눈 대화와 관계','계획한 활동의 실행과 개선점','활용한 매체와 표현의 다양성','유아의 몰입과 생활의 균형']],
-['앞으로 더 키우고 싶은 역량은?',['새로운 기술을 탐색하는 힘','디지털을 통한 소통과 협력','아이디어를 실천하는 추진력','다양한 도구를 융합하는 능력','적절한 디지털 사용을 판단하는 힘']]
+['놀이 중 유아가 태블릿으로 찍은 사진을 보여 주며 “이게 왜 이렇게 보이지?”라고 묻는다. 나는?',
+ ['사진을 찍은 자리와 각도를 바꿔 보며 무엇이 달라지는지 더 살펴본다','친구들도 자기 사진을 가져와 서로의 발견을 이야기하도록 한다','궁금증을 해결할 수 있는 짧은 관찰 활동을 바로 제안한다','사진을 확대하거나 다른 방식으로 기록해 차이를 비교한다','화면 속 모습과 실제 사물을 함께 확인하며 무리 없이 탐색하도록 돕는다']],
+['모둠별 놀이 결과를 함께 나눌 시간이 생겼다. 가장 먼저 떠오르는 방식은?',
+ ['각 모둠이 발견한 의외의 점을 골라 소개하게 한다','서로 질문하고 칭찬을 주고받는 나눔 시간을 마련한다','모둠마다 핵심 결과 한 가지씩 발표하도록 흐름을 정한다','사진·음성·그림을 엮어 하나의 공동 전시로 구성한다','발표에 부담을 느끼는 유아도 편하게 참여할 방법을 마련한다']],
+['준비한 디지털 활동에 유아들이 별 관심을 보이지 않는다. 나는?',
+ ['유아들이 지금 관심을 보이는 대상이나 놀이를 관찰한다','유아들과 무엇을 하고 싶은지 이야기하며 함께 방향을 찾는다','활동 방법이나 규칙을 간단히 바꾸어 다시 제안한다','다른 표현 매체나 도구를 활용해 접근 방식을 바꾼다','디지털 활동을 고집하지 않고 현재 놀이 흐름을 존중한다']],
+['유아가 놀이 중 만든 결과물을 더 발전시키고 싶어 한다. 나는?',
+ ['유아가 스스로 새로운 방법을 찾아 시도할 수 있도록 질문한다','친구와 아이디어를 나누고 함께 만들 기회를 연결한다','다음 단계에서 해 볼 일을 정해 작은 목표로 실행한다','사진·소리·영상 등 다른 표현 방법을 더해 보도록 제안한다','유아가 감당할 수 있는 범위인지 살피며 천천히 확장한다']],
+['학급에서 처음 사용하는 앱을 도입하기 전, 나는?',
+ ['직접 여러 기능을 눌러 보며 예상하지 못한 활용법을 찾아본다','동료 교사와 함께 사용 장면을 상상하고 의견을 나눈다','필요한 기능을 정하고 간단한 시범 활동을 먼저 준비한다','기존에 쓰던 도구와 자료를 어떻게 연결할지 살펴본다','개인정보·광고·접근성 등 사용 조건을 먼저 점검한다']],
+['유아들이 촬영한 사진에 친구 얼굴이 담겨 있다. 다음 행동은?',
+ ['사진 속에서 유아들이 새롭게 발견한 장면이나 특징을 살펴본다','사진에 나온 친구의 생각과 느낌을 함께 확인한다','사진을 활용할 수 있는 활동과 공유 절차를 정리한다','사진을 그림이나 음성 설명과 결합해 표현 자료로 만든다','당사자의 동의를 확인하고 공개 범위를 신중하게 결정한다']],
+['디지털 놀이 중 기기 한 대가 갑자기 작동하지 않는다. 나는?',
+ ['어떤 상황에서 멈췄는지 살펴보고 다른 조작을 시험한다','기기를 기다리는 유아들이 함께 할 수 있는 역할을 찾는다','대체 기기나 비슷한 활동으로 바꾸어 흐름을 이어 간다','다른 기기나 매체를 조합해 원래의 놀이 목표를 살린다','기기 상태와 안전을 확인한 뒤 필요하면 활동을 잠시 멈춘다']],
+['교사 연수에서 가장 기억에 남을 것 같은 순간은?',
+ ['처음 접한 기능으로 새로운 가능성을 발견하는 순간','다른 교사들의 경험을 듣고 공감대를 찾는 순간','배운 내용을 내일 수업에 적용할 계획이 구체화되는 순간','여러 도구를 연결해 예상 밖의 결과물을 만드는 순간','활용의 장점과 주의점을 함께 따져 적절한 기준을 세우는 순간']],
+['유아가 놀이 사진을 가정과 나누고 싶다고 한다. 나는?',
+ ['사진을 고르는 과정에서 유아가 중요하게 여기는 장면을 발견한다','사진을 보며 가족과 나누고 싶은 이야기를 함께 정리한다','공유할 사진과 전달 방법을 정해 실제로 진행한다','사진에 유아의 목소리나 그림을 더해 전달 방식을 다양하게 만든다','공유 동의와 개인정보를 확인하고 안전한 범위에서 나눈다']],
+['놀이 시간이 예상보다 짧아졌다. 가장 먼저 하는 판단은?',
+ ['유아가 깊이 빠져 있는 탐색이 무엇인지 살핀다','함께하는 유아들의 의견을 듣고 이어 갈 부분을 정한다','오늘 꼭 경험할 핵심만 남겨 활동 순서를 조정한다','복잡한 제작 과정을 줄이거나 더 간단한 매체로 바꾼다','서두르기보다 놀이를 다음 시간에 이어 갈 수 있도록 마무리한다']],
+['유아들이 같은 주제로 서로 다른 결과물을 만들었다. 나는?',
+ ['결과물 사이의 닮은 점과 예상 밖의 차이를 찾아본다','서로의 작품을 소개하고 질문하는 시간을 마련한다','각 결과물에서 다음에 발전시킬 부분을 정해 본다','작품들을 모아 영상·전시·디지털 책 등으로 엮어 본다','결과물의 완성도보다 각 유아의 과정과 참여를 살핀다']],
+['새로운 디지털 놀이 아이디어가 떠올랐다. 나의 다음 행동은?',
+ ['관련 사례나 기능을 찾아보며 아이디어를 더 탐색한다','함께할 사람들과 이야기를 나누며 아이디어를 다듬는다','준비물과 진행 순서를 정해 작은 규모로 먼저 실행한다','어떤 매체를 결합하면 표현이 풍부해질지 구상한다','유아의 발달과 놀이 맥락에 맞는지 검토한 뒤 결정한다']],
+['유아가 디지털 도구를 예상과 다른 방식으로 사용한다. 나는?',
+ ['그 방식에서 유아가 발견한 새로운 가능성을 관찰한다','유아에게 생각을 물어보고 친구들과 경험을 나누게 한다','놀이 목표와 연결할 수 있는 방법을 함께 정리한다','그 사용법을 다른 매체나 표현 활동으로 이어 본다','안전과 목적에 어긋나지 않는지 살핀 뒤 허용 범위를 정한다']],
+['하루의 디지털 놀이를 돌아볼 때 가장 궁금한 것은?',
+ ['유아가 새롭게 발견하거나 더 알고 싶어 한 것은 무엇인가?','누구와 어떤 생각과 경험을 주고받았는가?','처음 세운 계획 중 실제로 시도하고 바꾼 것은 무엇인가?','어떤 도구와 표현 방식이 새롭게 연결되었는가?','디지털 경험과 신체·감각·관계 놀이가 균형을 이루었는가?']],
+['앞으로 동료 교사와 함께 디지털 놀이를 연구한다면, 내가 맡고 싶은 역할은?',
+ ['새로운 사례와 가능성을 찾아 공동의 질문을 제안하는 역할','구성원들의 의견을 연결하고 경험을 나누게 하는 역할','연구 내용을 실행 계획으로 구체화하고 실천을 이끄는 역할','다양한 도구와 자료를 연결해 새로운 방식을 실험하는 역할','활동의 적절성과 안전, 지속 가능성을 점검하는 역할']]
 ];
 const ideas={
 cat:['교실 속 색깔 사냥꾼: 태블릿 카메라로 교실에서 같은 색을 찾아 촬영하고 색깔별로 모아 보기','소리 탐험 지도: 교실과 바깥에서 들리는 소리를 녹음하고 어떤 소리인지 맞혀 보기','확대 관찰 연구소: 꽃잎·나뭇잎·자연물을 확대 촬영해 새로운 무늬 발견하기'],
@@ -268,10 +283,10 @@ document.querySelectorAll('[data-jump]').forEach(b=>b.addEventListener('click',(
 document.querySelectorAll('.grade').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.grade').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');grade=b.dataset.grade;}));
 function renderHomeAnimals(){$('homeAnimals').innerHTML=ids.map((id,i)=>`<div class="animal-pill" title="${types[id].animal}"><img src="${ART[i]}" alt="${types[id].animal}"></div>`).join('');}
 function renderTypes(){$('typeGrid').innerHTML=ids.map((id,i)=>{let t=types[id];return `<article class="typecard"><div class="typeart"><img src="${ART[i]}" alt="${t.animal}"></div><div class="result-kicker">${t.animal}</div><h3>${t.name}</h3><div class="subtitle">${t.line}</div><p>${t.desc}</p><div class="chips">${t.keys.map(k=>`<span class="chip">#${k}</span>`).join('')}</div></article>`}).join('');}
-function start(){nickname='';index=0;answers=[];go('quiz');renderQuestion();}
-function renderQuestion(){let q=questions[index];$('qnumber').textContent=`QUESTION ${String(index+1).padStart(2,'0')} / ${questions.length}`;$('qpercent').textContent=Math.round((index+1)/questions.length*100)+'%';$('qfill').style.width=((index+1)/questions.length*100)+'%';$('qtitle').textContent=q[0];$('options').innerHTML='';let order=[0,1,2,3,4].map(x=>(x+index*2)%5);order.forEach(k=>{let b=document.createElement('button');b.className='option';b.textContent=q[1][k];b.addEventListener('click',()=>{answers[index]=ids[k];if(index<questions.length-1){index++;renderQuestion();}else finish();});$('options').appendChild(b);});$('prev').disabled=index===0;}
+function start(){nickname=$('nickname').value.trim();index=0;answers=[];go('quiz');renderQuestion();}
+function renderQuestion(){let q=questions[index];$('qnumber').textContent=`QUESTION ${String(index+1).padStart(2,'0')} / ${questions.length}`;$('qpercent').textContent=Math.round((index+1)/questions.length*100)+'%';$('qfill').style.width=((index+1)/questions.length*100)+'%';$('qtitle').textContent=q[0];$('options').innerHTML='';let order=[0,1,2,3,4];for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}order.forEach(k=>{let b=document.createElement('button');b.className='option';b.textContent=q[1][k];b.addEventListener('click',()=>{answers[index]=ids[k];if(index<questions.length-1){index++;renderQuestion();}else finish();});$('options').appendChild(b);});$('prev').disabled=index===0;}
 $('start').addEventListener('click',start);$('prev').addEventListener('click',()=>{if(index>0){index--;renderQuestion();}});
-async function finish(){let scores=Object.fromEntries(ids.map(id=>[id,0]));answers.forEach(a=>scores[a]++);let sorted=[...ids].sort((a,b)=>scores[b]-scores[a]||ids.indexOf(a)-ids.indexOf(b));let best=sorted[0],t=types[best];latest={best,scores,sorted,nickname,grade,at:new Date().toISOString()};$('resultWho').textContent=(nickname?nickname+' 선생님의 ':'나의 ')+ '디지털 놀이 교사 유형';$('resultImage').src=ART[ids.indexOf(best)];$('resultAnimal').textContent=t.animal;$('resultName').textContent=t.name;$('resultLine').textContent=t.line;$('resultDesc').textContent=t.desc;$('resultKeys').innerHTML=t.keys.map(k=>`<span class="chip">#${k}</span>`).join('');$('resultTip').textContent='성장 아이디어 · '+t.tip;$('resultBars').innerHTML=sorted.map(id=>`<div class="barrow"><span>${types[id].emoji} ${types[id].animal.replace('형','')}</span><div class="bar"><i style="width:${scores[id]/questions.length*100}%"></i></div><b>${scores[id]}</b></div>`).join('');let tie=scores[sorted[0]]===scores[sorted[1]];$('resultNote').textContent=`담당 연령: ${grade} · 응답 ${questions.length}개 완료`+(tie?' · 대표 유형 점수가 동점이에요. 상위 유형들을 함께 참고해 주세요.':'')+' · 이 검사는 자기성찰을 위한 참고용이며 표준화된 심리검사는 아니에요.';await saveResult(latest);go('result');}
+async function finish(){let scores=Object.fromEntries(ids.map(id=>[id,0]));answers.forEach(a=>scores[a]++);let sorted=[...ids].sort((a,b)=>scores[b]-scores[a]);const maxScore=scores[sorted[0]];const tied=sorted.filter(id=>scores[id]===maxScore);let best=tied[Math.floor(Math.random()*tied.length)],t=types[best];latest={best,scores,sorted,nickname,grade,at:new Date().toISOString()};$('resultWho').textContent=(nickname?nickname+' 선생님의 ':'나의 ')+ '디지털 놀이 교사 유형';$('resultImage').src=ART[ids.indexOf(best)];$('resultAnimal').textContent=t.animal;$('resultName').textContent=t.name;$('resultLine').textContent=t.line;$('resultDesc').textContent=t.desc;$('resultKeys').innerHTML=t.keys.map(k=>`<span class="chip">#${k}</span>`).join('');$('resultTip').textContent='성장 아이디어 · '+t.tip;$('resultBars').innerHTML=sorted.map(id=>`<div class="barrow"><span>${types[id].emoji} ${types[id].animal.replace('형','')}</span><div class="bar"><i style="width:${scores[id]/questions.length*100}%"></i></div><b>${scores[id]}</b></div>`).join('');let tie=tied.length>1;$('resultNote').textContent=`담당 연령: ${grade} · 응답 ${questions.length}개 완료`+(tie?` · ${tied.map(id=>types[id].animal).join(' · ')} 점수가 같아 대표 유형은 동점 유형 중 하나로 표시했어요. 유형별 점수를 함께 참고해 주세요.`:'')+' · 이 검사는 자기성찰을 위한 참고용이며 표준화된 심리검사는 아니에요.';await saveResult(latest);go('result');}
 
 async function saveResult(r){
  if(!db){
@@ -330,7 +345,7 @@ async function renderStats(){
    }).join('');
    $('dbStatus').textContent='연결 완료 · 여러 기기의 익명 검사 결과를 함께 집계하고 있어요.';
  }catch(error){
-   $('dbStatus').textContent=`통계 불러오기 실패 (${error.code||'오류'}): ${error.message||error}. Supabase 설정을 확인해 주세요.`;
+   $('dbStatus').textContent=`통계 불러오기 실패 (${error.code||'오류'}): ${error.message||error}. Supabase SQL 함수와 권한 설정을 확인해 주세요.`;
    console.error('Supabase stats error:',error);
  }
 }

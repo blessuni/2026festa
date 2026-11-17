@@ -39,7 +39,6 @@ label{display:block;font-size:13px;font-weight:850;color:#4e5279;margin:0 0 8px}
 footer{text-align:center;color:#8589a7;font-size:12px;padding:25px}
 @media(max-width:900px){.mini-features{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.head{align-items:flex-start;flex-direction:column}.nav{justify-content:flex-start}.mini-features{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}.statsgrid{grid-template-columns:1fr 1fr}.shell{padding:20px}.brand b{font-size:15px}}
-.option{font-size:15px;padding:15px 16px}.option:active{background:#eeedff}
 @media print{header,.no-print,footer{display:none!important}body{background:white}.shell{box-shadow:none;border:0}main{margin:0;padding:0}}
 
 /* 전체 디지털 놀이교사 유형 분포도도: 한눈에 비교하는 카드형 막대 그래프 */
@@ -55,28 +54,33 @@ footer{text-align:center;color:#8589a7;font-size:12px;padding:25px}
 @media(max-width:650px){.dist-item{grid-template-columns:34px 1fr 70px;gap:8px;padding:11px}.dist-track{grid-column:2/3;grid-row:2}.dist-value{grid-column:3;grid-row:1/3}.dist-name{font-size:14px}}
 
 
-/* 유아용 그림 중심 선택 카드 */
-.child-scene{min-height:118px;display:flex;align-items:center;justify-content:center;margin:0 0 14px;padding:14px;border-radius:20px;background:linear-gradient(135deg,#f3efff,#eaf8ff);border:1px solid #e2defb}
-.child-scene .scene-art{width:100%;max-width:360px;height:118px;display:flex;align-items:center;justify-content:center;gap:16px}
-.scene-emoji{font-size:62px;filter:drop-shadow(0 5px 4px #7c72b533)}
-.scene-bubble{background:white;border:1px solid #e5defc;border-radius:16px;padding:12px 16px;font-weight:800;color:#4b4775;line-height:1.45}
-.child-options{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.child-option{padding:12px 10px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;min-height:150px;color:#4c456f;background:#fff;border-color:#e5defc}
-.child-option .opt-art{height:72px;width:100%;display:grid;place-items:center;border-radius:13px;background:linear-gradient(145deg,#f5f0ff,#eefaff);font-size:43px}
-.child-option .opt-label{font-size:14px;line-height:1.45;font-weight:800}
-.child-option:active{transform:scale(.98)}
-.child-result-hero{display:flex;align-items:center;justify-content:center;gap:15px;text-align:left;margin-bottom:18px}
-.child-mascot{width:104px;height:104px;flex:none;border-radius:28px;background:linear-gradient(135deg,#fff0c9,#e8e2ff);display:grid;place-items:center;font-size:64px;box-shadow:0 8px 20px #5b4c8b18}
-.child-result-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left}
-.child-promise{grid-column:1/-1;background:#f3fbf3}
-@media(max-width:620px){.child-options{grid-template-columns:1fr}.child-option{min-height:unset;flex-direction:row;text-align:left;padding:10px}.child-option .opt-art{width:76px;flex:none;height:70px}.child-result-grid{grid-template-columns:1fr}.child-promise{grid-column:auto}.child-result-hero{align-items:flex-start}.child-mascot{width:82px;height:82px;font-size:50px}}
+/* 15문항 A/B 검사 화면 */
+.quiz-shell{max-width:760px;margin:0 auto;padding:clamp(22px,4vw,38px)}
+.quiz-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.quiz-back{border:0;background:transparent;color:#245b63;font-weight:800;padding:8px 10px 8px 0}
+.quiz-count{border:1px solid #8bc9c1;background:#e8f5f3;color:#8b4b0b;border-radius:99px;padding:6px 13px;font-size:13px;font-weight:900}
+.quiz-shell .progress{margin:0 0 9px;height:11px;background:#e5f2f1}
+.quiz-shell .progress>div{background:linear-gradient(90deg,#57b8ad,#267c83)}
+.quiz-meta{display:flex;justify-content:space-between;align-items:center;gap:10px;color:#477d80;font-size:12px;margin:0 0 36px}
+#qcategory{display:inline-flex;background:#e6f3f1;border:1px solid #b8ded9;border-radius:99px;padding:5px 12px;color:#28656b;font-weight:850}
+.qtitle{font-size:clamp(22px,3.8vw,29px);line-height:1.42;letter-spacing:-.6px;margin:0 0 8px;color:#173d4b}
+.quiz-hint{margin:0 0 30px;color:#477d80;font-size:13px;line-height:1.6}
+.options{display:grid;gap:14px}
+.option{display:flex;align-items:flex-start;gap:14px;width:100%;min-height:88px;text-align:left;border:1.5px solid #b8ded9;background:#f7fbfa;border-radius:17px;padding:18px 20px;color:#294b55;line-height:1.5;transition:.15s}
+.option:hover,.option:focus-visible{border-color:#4ca69e;background:#edf7f5;box-shadow:0 4px 14px #267c8318}
+.option-letter{flex:0 0 33px;height:33px;display:grid;place-items:center;border:1px solid #8bc9c1;border-radius:11px;background:#fff;color:#28656b;font-weight:900}
+.option-copy{display:block;min-width:0}
+.option-main{display:block;font-size:15px;font-weight:850;color:#21434c}
+.option-sub{display:block;font-size:12px;color:#648b8d;margin-top:4px}
+.quiz-footer{display:flex;justify-content:space-between;gap:12px;border-top:1px solid #dcebea;margin-top:30px;padding-top:17px;color:#648b8d;font-size:12px}
+@media(max-width:600px){.quiz-shell{padding:20px}.quiz-meta{margin-bottom:26px}.option{padding:15px;min-height:80px}.quiz-footer{font-size:11px}}
 
 </style></head>
 <body>
 <header><div class="head">
  <div class="brand"><div class="brandmark">✦</div><div><small>2026. 유초등 수업나눔 페스타</small><b>디지털 놀이 교사 유형 검사</b></div></div>
  <nav class="nav">
-  <button class="active" data-page="home">교사 검사</button><button data-page="child">🌱 유아 체험</button><button data-page="types">🐾 유형집</button><button data-page="ideas">💡 수업 영감 연구소</button><button data-page="match">🤝 협업 메이트</button><button data-page="stats">📊 현황판</button>
+  <button class="active" data-page="home">검사하기</button><button data-page="types">🐾 유형집</button><button data-page="ideas">💡 수업 영감 연구소</button><button data-page="match">🤝 협업 메이트</button><button data-page="stats">📊 현황판</button>
  </nav>
 </div></header>
 <main>
@@ -85,14 +89,14 @@ footer{text-align:center;color:#8589a7;font-size:12px;padding:25px}
   <div class="hero">
    <span class="eyebrow">✦ 2026. 유초등 수업나눔 페스타</span>
    <h1>나는 교실 속 어떤<br><span class="accent">디지털 놀이 교사</span>일까?</h1>
-   <p class="lead">교실 속 상황에서 나의 선택을 돌아보며 디지털 놀이 실천 스타일을 발견해요.<br>나와 닮은 동물 캐릭터를 발견하고, 새로운 수업 영감과 협업 아이디어를 만나 보세요! ✨</p>
+   <p class="lead">15가지 교실 상황에서 두 가지 선택지를 고르며 나의 디지털 놀이 실천 스타일을 발견해요.<br>나와 닮은 동물 캐릭터를 발견하고, 새로운 수업 영감과 협업 아이디어를 만나 보세요! ✨</p>
   </div>
   <div class="homeform">
    <label for="nickname">선생님 성함 또는 닉네임</label><input class="input" id="nickname" maxlength="24" placeholder="예: 반짝이는 선생님 (선택)">
    <label style="margin-top:17px">현재 근무 학교급</label>
    <div class="grade-row" id="grades"><button class="grade selected" data-grade="유치원">유치원</button><button class="grade" data-grade="초등학교">초등학교</button><button class="grade" data-grade="특수/기타">특수/기타</button></div>
    <button class="primary wide" id="start">나의 디지털 교사 유형 발견하기　→</button>
-   <p class="muted" style="margin:12px 0 0">20문항 · 약 4~5분 · 정답 없음 · 결과는 공동 현황판 연동 후 통합 집계 예정</p>
+   <p class="muted" style="margin:12px 0 0">약 2~3분 · 정답 없음 · 결과는 공동 현황판 연동 후 통합 집계 예정</p>
   </div>
   <div class="mini-features">
    <div class="feature"><b>🧰 에듀테크 제안</b><span>나의 유형에 맞는 도구 활용 아이디어</span></div>
@@ -104,20 +108,14 @@ footer{text-align:center;color:#8589a7;font-size:12px;padding:25px}
  </div>
 </section>
 
-
-<section class="view" id="child"><div class="shell">
- <div class="hero"><span class="eyebrow">🌱 유아용 디지털 생활 탐험</span><h1>나의 <span class="accent">디지털 생활</span><br>탐험!</h1><p class="lead">그림 속 상황을 보며 내가 좋아하는 놀이와 즐겁고 안전한 디지털 약속을 찾아봐요.</p></div>
- <div id="childIntro" class="homeform"><h3>그림을 보고 나에게 가까운 모습을 골라요.</h3><p class="muted">정답은 없어요. 어른과 함께 읽고 편하게 선택해요. 약 3분</p><button class="primary wide" id="childStart">탐험 시작하기 →</button></div>
- <div id="childQuiz" style="display:none"><div class="quiz-top"><span id="childQNum">1 / 8</span><span id="childPct">13%</span></div><div class="progress"><div id="childFill"></div></div><h2 class="qtitle" id="childQ"></h2><div class="child-scene" id="childScene" aria-hidden="true"></div><div class="options child-options" id="childOptions"></div><div class="quiz-actions"><button class="ghost" id="childPrev">← 이전</button><span class="muted">그림과 설명을 보고 골라요</span></div></div>
- <div id="childResult" style="display:none" class="idea-box"><div class="child-result-hero"><div class="child-mascot" id="childMascot">✨</div><div><h2 id="childResultTitle">나의 디지털 놀이 발견!</h2><p id="childResultSubtitle">나만의 놀이 모습을 발견했어요!</p></div></div><div class="child-result-grid"><div class="subpanel"><h3>💗 내가 좋아하는 놀이</h3><p id="childPlay"></p></div><div class="subpanel"><h3>⭐ 내가 잘하고 있는 습관</h3><p id="childHabit"></p></div><div class="subpanel child-promise"><h3>🌱 앞으로 해 볼 작은 약속</h3><p id="childPromise"></p></div></div><div class="result-actions"><button class="primary" id="childAgain">다시 해보기</button></div><p class="muted">이 결과는 나를 평가하는 점수가 아니라, 나의 놀이와 생활을 함께 돌아보는 이야기예요.</p></div>
- <div class="note">키캡 만들기에서는 검사 결과와 모양을 연결하지 않고, 준비된 다양한 악세사리 중 마음에 드는 것을 자유롭게 골라요.</div>
-</div></section>
-
-<section class="view" id="quiz"><div class="shell">
- <div class="quiz-top"><span id="qnumber">QUESTION 01 / 22</span><span id="qpercent">7%</span></div><div class="progress"><div id="qfill"></div></div>
- <div class="result-kicker">교실 속 나의 선택</div><h2 class="qtitle" id="qtitle"></h2>
+<section class="view" id="quiz"><div class="shell quiz-shell">
+ <div class="quiz-head"><button class="quiz-back" id="prev">← 이전으로</button><span class="quiz-count" id="qnumber">Q1 / 15</span></div>
+ <div class="progress"><div id="qfill"></div></div>
+ <div class="quiz-meta"><span id="qcategory">✧ 교실 환경 & 배치</span><span id="qpercent">7% 완료</span></div>
+ <h2 class="qtitle" id="qtitle"></h2>
+ <p class="quiz-hint" id="qhint">ⓘ 교실에서 내가 실제로 선택할 법한 방법을 골라 주세요.</p>
  <div class="options" id="options"></div>
- <div class="quiz-actions"><button class="ghost" id="prev">← 이전 질문</button><span class="muted">가장 나다운 선택 하나</span></div>
+ <div class="quiz-footer"><span>선택 시 다음 문항으로 자동 이동합니다.</span><span id="qstep">질문 1 / 15</span></div>
 </div></section>
 
 <section class="view" id="result"><div class="shell">
@@ -231,9 +229,7 @@ footer{text-align:center;color:#8589a7;font-size:12px;padding:25px}
  <div class="subpanel"><h3>전체 디지털 놀이교사 유형 분포도</h3><div id="statsBars"><p class="muted">검사 결과가 모이면 다섯 가지 디지털 놀이교사 유형별 인원과 비율이 표시돼요.</p></div></div>
  <div class="subpanel" style="margin-top:15px"><h3>🏫 학교급별 유형 비교</h3><p class="muted">유치원 · 초등학교 · 특수/기타 선생님들의 동물 유형 분포를 비교해요.</p><div id="schoolCompare"></div></div>
  <div class="note">이름이나 연락처는 저장하지 않으며, 학교급·대표 유형·유형별 점수만 익명으로 저장해요.</div>
- <div class="result-actions no-print"><button class="ghost" id="exportStats">현황 CSV 내려받기</button><button class="ghost" id="openAdmin">관리자 메뉴</button></div>
-</div>
- <div id="adminPanel" class="subpanel" style="display:none;margin-top:16px"><h3>🔐 관리자 메뉴</h3><p class="muted">공동 데이터 전체 삭제는 서버 측 관리자 인증 기능을 연결한 뒤 활성화해야 안전해요. 현재는 이 브라우저의 임시 검사 상태만 초기화할 수 있어요.</p><button class="ghost" id="localReset" style="margin-top:10px">이 기기의 임시 상태 초기화</button><button class="ghost" disabled style="margin-top:10px;opacity:.55">공동 현황판 전체 초기화 · 서버 인증 연결 필요</button><p class="error" id="adminMsg"></p></div>
+ <div class="result-actions no-print"><button class="ghost" id="exportStats">현황 CSV 내려받기</button><button class="ghost" id="resetStats">이 기기 기록 초기화</button></div>
 </div></section>
 </main><footer>2026. 유초등 수업나눔 페스타 · 서로 다른 강점이 만나 새로운 수업을 만듭니다 ✦</footer>
 
@@ -254,160 +250,21 @@ octopus:{emoji:'🐙',animal:'문어형',name:'디지털 멀티플레이어',lin
 turtle:{emoji:'🐢',animal:'거북이형',name:'균형 있는 조절자',line:'유아의 발달과 디지털 경험의 균형을 지키는 안내자',desc:'디지털 도구의 가능성을 인정하면서도 유아의 발달, 안전, 신체 놀이와의 균형을 함께 생각해요. 꼭 필요한 순간에 적절하게 활용하고 경험을 차분히 돌아보는 편이에요.',keys:['균형','신중함','안전','지속성'],strength:'디지털 경험과 실제 놀이, 안전과 몰입의 균형을 살피는 힘',tip:'신중함을 바탕으로 작게 시도해 보고, 효과가 있는 방법은 꾸준히 이어 가 보세요.',color:'#eaf8e7'}
 };
 const questions = [
-  [
-    "바깥놀이에서 유아들이 나뭇잎 사진을 찍었어요. 한 유아가 무늬가 다르다고 말한다면?",
-    [
-      ["태블릿으로 사진을 확대하고 다른 나뭇잎과 비교하며 더 자세히 살펴보게 한다.", "cat"],
-      ["친구들이 찍은 사진을 함께 보며 서로 발견한 점을 이야기하게 한다.", "dog"]
-    ]
-  ],
-  [
-    "새로운 디지털 앱을 수업에 처음 사용해요. 어떻게 시작하고 싶나요?",
-    [
-      ["여러 기능을 직접 눌러 보며 놀이에 활용할 수 있는 방법을 찾아본다.", "cat"],
-      ["활동 목표와 순서를 먼저 정하고 필요한 기능부터 익혀 적용한다.", "rabbit"]
-    ]
-  ],
-  [
-    "유아들이 만든 작품을 다른 친구에게 소개하고 싶어 해요. 어떻게 도울까요?",
-    [
-      ["사진·음성·그림을 연결해 작품을 다양한 방식으로 표현하게 한다.", "octopus"],
-      ["친구들이 서로 질문하고 칭찬하며 작품 이야기를 나누게 한다.", "dog"]
-    ]
-  ],
-  [
-    "디지털 놀이 중 유아들의 관심이 예상과 다르게 바뀌었어요. 어떻게 할까요?",
-    [
-      ["유아가 새롭게 관심을 보이는 대상을 관찰하고 그 방향으로 탐색을 이어 간다.", "cat"],
-      ["남은 시간과 준비물을 살펴 놀이 흐름을 다시 구성해 실행한다.", "rabbit"]
-    ]
-  ],
-  [
-    "유아가 태블릿으로 찍은 사진에 자기 이야기를 더하고 싶대요. 어떻게 지원할까요?",
-    [
-      ["사진에 목소리와 그림을 더해 하나의 이야기 작품으로 만들어 보게 한다.", "octopus"],
-      ["친구들과 사진을 보며 각자 떠올린 이야기를 주고받게 한다.", "dog"]
-    ]
-  ],
-  [
-    "친구의 얼굴이 나온 사진을 공유하고 싶어 해요. 먼저 무엇을 안내할까요?",
-    [
-      ["사진 속 친구에게 괜찮은지 묻고 누구와 나눌지 함께 확인하게 한다.", "turtle"],
-      ["사진을 보며 친구의 표정과 그때의 기분을 함께 이야기하게 한다.", "dog"]
-    ]
-  ],
-  [
-    "태블릿이 갑자기 작동하지 않아 놀이가 멈췄어요. 어떻게 할까요?",
-    [
-      ["다른 기능이나 방법을 살펴 문제를 해결할 수 있는지 시도한다.", "cat"],
-      ["기기를 잠시 내려놓고 블록·그림 등 실물 놀이로 자연스럽게 이어 간다.", "turtle"]
-    ]
-  ],
-  [
-    "디지털 놀이 연수에 참여한다면 가장 기대하는 경험은 무엇인가요?",
-    [
-      ["새로운 도구를 직접 만져 보고 교실에서 쓸 방법을 찾아보는 경험", "cat"],
-      ["동료와 수업 사례를 나누고 바로 실행할 활동을 함께 계획하는 경험", "rabbit"]
-    ]
-  ],
-  [
-    "하나의 놀이를 여러 방식으로 기록하려고 해요. 어떻게 할까요?",
-    [
-      ["사진·영상·음성을 연결해 놀이 과정을 풍부하게 남긴다.", "octopus"],
-      ["유아가 기록에 오래 머물지 않도록 필요한 장면만 남기고 실제 놀이를 이어 간다.", "turtle"]
-    ]
-  ],
-  [
-    "놀이 시간이 끝나 가는데 유아들이 더 하고 싶어 해요. 어떻게 마무리할까요?",
-    [
-      ["무엇에 몰입했는지 함께 돌아보고 다음에 이어 할 방법을 찾는다.", "dog"],
-      ["오늘의 결과와 남은 과정을 정리해 다음 놀이 시간에 이어 가도록 계획한다.", "rabbit"]
-    ]
-  ],
-  [
-    "새로운 디지털 놀이 아이디어가 떠올랐어요. 다음 행동은?",
-    [
-      ["관련 기능과 사례를 더 살펴보며 아이디어를 구체화한다.", "cat"],
-      ["간단한 준비물과 순서를 정해 작은 활동으로 먼저 실행해 본다.", "rabbit"]
-    ]
-  ],
-  [
-    "유아들이 만든 디지털 결과물을 함께 감상하려고 해요. 어떻게 할까요?",
-    [
-      ["친구들이 서로 작품을 소개하고 궁금한 점을 묻도록 돕는다.", "dog"],
-      ["사진·그림·소리 등 다양한 표현을 한 화면이나 작품으로 연결한다.", "octopus"]
-    ]
-  ],
-  [
-    "디지털 도구를 선택할 때 가장 먼저 확인하는 것은 무엇인가요?",
-    [
-      ["유아가 직접 탐색하고 새로운 것을 발견할 수 있는 기능인지 살펴본다.", "cat"],
-      ["놀이 목표에 꼭 필요한지, 사용 시간과 안전에 무리가 없는지 살펴본다.", "turtle"]
-    ]
-  ],
-  [
-    "유아가 예상하지 못한 방법으로 디지털 도구를 사용했어요. 어떻게 반응할까요?",
-    [
-      ["그 방법에서 어떤 생각을 했는지 물으며 새로운 탐색으로 이어 간다.", "cat"],
-      ["다른 표현 도구와 연결해 유아의 생각을 작품으로 확장해 본다.", "octopus"]
-    ]
-  ],
-  [
-    "수업을 준비할 때 나는 주로 어떤 방식으로 준비하나요?",
-    [
-      ["동료와 아이디어를 나누고 서로의 경험을 반영해 준비한다.", "dog"],
-      ["활동 순서와 역할, 필요한 자료를 정리해 실행 계획을 세운다.", "rabbit"]
-    ]
-  ],
-  [
-    "사진에 설명을 더해 디지털 작품을 만들어요. 어떤 지원을 하고 싶나요?",
-    [
-      ["유아의 목소리·그림·사진을 연결해 자기 방식으로 표현하게 한다.", "octopus"],
-      ["사진을 찍고 녹음한 뒤에는 실제 경험과 연결해 충분히 이야기 나눈다.", "turtle"]
-    ]
-  ],
-  [
-    "디지털 놀이를 마친 뒤 어떤 경험으로 이어 가고 싶나요?",
-    [
-      ["화면에서 발견한 것을 실제 자연물이나 교실 물건에서 찾아본다.", "turtle"],
-      ["친구들과 결과를 공유하고 서로의 생각을 더해 새로운 이야기를 만든다.", "dog"]
-    ]
-  ],
-  [
-    "계획한 디지털 놀이와 유아들의 관심이 달라졌어요. 어떻게 할까요?",
-    [
-      ["유아들의 새로운 관심을 반영해 놀이 방향을 유연하게 바꾼다.", "cat"],
-      ["가능한 활동을 다시 정리하고 준비물을 조정해 새로운 흐름으로 운영한다.", "rabbit"]
-    ]
-  ],
-  [
-    "여러 디지털 도구를 함께 활용할 때 나는 어떻게 선택하나요?",
-    [
-      ["사진·소리·영상 등 각 매체의 장점을 연결해 표현을 확장한다.", "octopus"],
-      ["도구를 꼭 필요한 만큼만 사용하고 실물 놀이와의 균형을 살핀다.", "turtle"]
-    ]
-  ],
-  [
-    "동료와 디지털 놀이를 함께 준비한다면 나는 어떤 역할을 맡고 싶나요?",
-    [
-      ["서로의 강점을 살피고 의견을 조율해 함께하는 분위기를 만든다.", "dog"],
-      ["역할과 진행 순서를 정리하고 실제 운영까지 추진한다.", "rabbit"]
-    ]
-  ],
-  [
-    "유아가 디지털 놀이에 오래 몰입하고 있어요. 어떻게 지원할까요?",
-    [
-      ["몰입한 내용을 존중하면서 마무리 시점과 다음 활동을 함께 정한다.", "turtle"],
-      ["무엇이 재미있는지 질문하며 관심을 더 깊은 탐색으로 연결한다.", "cat"]
-    ]
-  ],
-  [
-    "유아들이 같은 주제로 각자 다른 결과물을 만들었어요. 다음에는?",
-    [
-      ["서로의 작품을 소개하고 다른 생각을 존중하며 감상하도록 돕는다.", "dog"],
-      ["사진·그림·음성 등 표현 방식을 더해 작품을 새롭게 구성하도록 돕는다.", "octopus"]
-    ]
-  ]
+  { category: "교실 환경 & 배치", title: "월요일 아침, 우리 반 교실에 디지털 기기(태블릿/카메라)를 어디에 둘까요?", options: [{label:'A', text:"놀이영역 한가운데 둬요. 아이들이 자유롭게 들고 찍으며 탐색하도록 해요.", type:"cat"},{label:'B', text:"관찰·기록 코너에 차분하게 세팅해요. 필요할 때 꺼내 쓰도록 준비해요.", type:"turtle"}] },
+  { category: "관찰 & 탐색", title: "바깥놀이 중 한 유아가 나뭇잎의 무늬가 다르다고 발견했어요. 어떻게 이어갈까요?", options: [{label:'A', text:"태블릿으로 나뭇잎을 확대해 보고 다른 잎과 비교해 보도록 해요.", type:"cat"},{label:'B', text:"친구들이 찍은 사진을 함께 보며 발견한 점을 서로 나누도록 해요.", type:"dog"}] },
+  { category: "공유 & 소통", title: "아이들이 디지털 기기로 찍은 사진을 친구들에게 보여 주고 싶어 해요. 어떻게 도울까요?", options: [{label:'A', text:"사진을 고른 아이가 발견한 점을 직접 소개하고 친구 질문을 받아 보게 해요.", type:"dog"},{label:'B', text:"사진을 모아 짧은 온라인 전시로 꾸미고 여러 표현을 더해 보게 해요.", type:"octopus"}] },
+  { category: "놀이 흐름 & 지원", title: "준비한 디지털 놀이에 아이들이 관심을 보이지 않아요. 어떻게 할까요?", options: [{label:'A', text:"아이들이 지금 관심을 보이는 놀이를 살펴보고 그 흐름에서 새롭게 발견할 거리를 찾아요.", type:"cat"},{label:'B', text:"하고 싶은 것을 아이들과 의논한 뒤 바로 해 볼 수 있는 작은 활동으로 바꿔요.", type:"rabbit"}] },
+  { category: "도구 탐색 & 실행", title: "처음 사용하는 앱으로 놀이를 시작하려고 해요. 무엇부터 해 볼까요?", options: [{label:'A', text:"필요한 기능을 직접 눌러 보며 여러 가능성을 충분히 탐색해 봐요.", type:"cat"},{label:'B', text:"놀이 목표에 필요한 기능을 먼저 정하고 짧게 연습한 뒤 시작해요.", type:"rabbit"}] },
+  { category: "협력 & 표현", title: "유아들이 함께 디지털 작품을 만들고 싶어 해요. 어떤 방식으로 도울까요?", options: [{label:'A', text:"친구와 역할을 나누고 서로의 생각을 주고받으며 함께 완성하도록 도와요.", type:"dog"},{label:'B', text:"사진·음성·그림 등 여러 기능을 연결해 표현 방법을 넓혀 보도록 도와요.", type:"octopus"}] },
+  { category: "디지털 시민성", title: "태블릿으로 찍은 사진을 가족과 공유하고 싶다고 해요. 무엇을 먼저 살필까요?", options: [{label:'A', text:"누구에게 어떤 이야기를 전하고 싶은지 아이와 함께 정하고 공유 방법을 찾아요.", type:"dog"},{label:'B', text:"사진 속 사람의 동의와 공개 범위를 확인하고 안전한 공유 방법을 정해요.", type:"turtle"}] },
+  { category: "문제 해결", title: "놀이 중 기기가 갑자기 작동하지 않아요. 어떻게 이어갈까요?", options: [{label:'A', text:"다른 기기나 준비한 방법을 빠르게 선택해 놀이를 이어가요.", type:"rabbit"},{label:'B', text:"기기 상태와 안전을 먼저 확인하고 필요하면 잠시 멈춰 대안을 살펴요.", type:"turtle"}] },
+  { category: "창작 & 표현", title: "유아가 만든 그림을 움직이는 영상으로 표현하고 싶어 해요. 어떻게 도울까요?", options: [{label:'A', text:"촬영 순서와 역할을 간단히 정해 작은 장면부터 직접 만들어 보게 해요.", type:"rabbit"},{label:'B', text:"그림·사진·소리 기능을 연결해 다양한 방식으로 표현하도록 도와요.", type:"octopus"}] },
+  { category: "시간 & 균형", title: "놀이 시간이 끝나 가는데 아이들은 더 놀고 싶어 해요. 어떻게 할까요?", options: [{label:'A', text:"남은 시간에 할 수 있는 만큼 순서를 조정해 놀이를 이어가도록 해요.", type:"rabbit"},{label:'B', text:"디지털 놀이를 마친 뒤 실제 몸놀이와 연결하거나 다음 놀이로 이어갈 시간을 마련해요.", type:"turtle"}] },
+  { category: "감상 & 확장", title: "친구들이 서로 다른 작품을 만들었어요. 다음 놀이를 어떻게 이어갈까요?", options: [{label:'A', text:"작품을 함께 보며 서로 궁금한 점과 재미있었던 점을 나누게 해요.", type:"dog"},{label:'B', text:"사진과 음성 등을 더해 작품을 하나의 디지털 이야기로 연결해 보게 해요.", type:"octopus"}] },
+  { category: "기획 & 실행", title: "새로운 디지털 놀이 아이디어가 떠올랐어요. 무엇부터 할까요?", options: [{label:'A', text:"관련 사례와 기능을 찾아보며 아이디어를 더 깊게 탐색해요.", type:"cat"},{label:'B', text:"준비물과 순서를 정해 작게라도 먼저 실행하고 다음 방법을 조정해요.", type:"rabbit"}] },
+  { category: "유아 주도성 & 안전", title: "유아가 디지털 도구를 예상하지 못한 방식으로 사용해요. 어떻게 반응할까요?", options: [{label:'A', text:"어떤 생각으로 그렇게 사용했는지 지켜보고 새로운 발견을 함께 살펴요.", type:"cat"},{label:'B', text:"안전한 사용인지 살핀 뒤 실제 놀이와 연결해도 좋을지 함께 정해요.", type:"turtle"}] },
+  { category: "성찰 & 균형", title: "하루의 디지털 놀이를 돌아볼 때 무엇을 중요하게 생각하나요?", options: [{label:'A', text:"아이들이 서로 어떤 이야기를 나누고 함께 배웠는지 돌아봐요.", type:"dog"},{label:'B', text:"디지털 경험과 몸놀이·바깥놀이가 균형 있게 어우러졌는지 살펴봐요.", type:"turtle"}] },
+  { category: "협업 & 역할", title: "동료 교사와 디지털 놀이를 함께 준비한다면 어떤 역할을 맡고 싶나요?", options: [{label:'A', text:"여러 디지털 도구를 연결해 새로운 표현과 활동을 만들어 보는 역할이 좋아요.", type:"octopus"},{label:'B', text:"실행할 순서를 정리하고 작은 활동부터 실제로 운영해 보는 역할이 좋아요.", type:"rabbit"}] }
 ];
 const ideas={
 cat:['교실 속 색깔 사냥꾼: 태블릿 카메라로 교실에서 같은 색을 찾아 촬영하고 색깔별로 모아 보기','소리 탐험 지도: 교실과 바깥에서 들리는 소리를 녹음하고 어떤 소리인지 맞혀 보기','확대 관찰 연구소: 꽃잎·나뭇잎·자연물을 확대 촬영해 새로운 무늬 발견하기'],
@@ -439,16 +296,38 @@ function renderTypes(){$('typeGrid').innerHTML=ids.map((id,i)=>{let t=types[id];
 function start(){nickname=$('nickname').value.trim();index=0;answers=[];go('quiz');renderQuestion();}
 function renderQuestion(){
  const q=questions[index];
- $('qnumber').textContent=`QUESTION ${String(index+1).padStart(2,'0')} / ${questions.length}`;
- $('qpercent').textContent=Math.round((index+1)/questions.length*100)+'%';
+ $('qnumber').textContent=`Q${index+1} / ${questions.length}`;
+ $('qpercent').textContent=`${Math.round((index+1)/questions.length*100)}% 완료`;
  $('qfill').style.width=((index+1)/questions.length*100)+'%';
- $('qtitle').textContent=q[0];$('options').innerHTML='';
- const order=q[1].map((_,i)=>i).sort(()=>Math.random()-.5);
- order.forEach(k=>{const [label,type]=q[1][k];const b=document.createElement('button');b.className='option';b.textContent=label;b.addEventListener('click',()=>{answers[index]=type;if(index<questions.length-1){index++;renderQuestion();}else finish();});$('options').appendChild(b);});
+ $('qcategory').textContent='✧ '+q.category;
+ $('qtitle').textContent=q.title;
+ $('qstep').textContent=`질문 ${index+1} / ${questions.length}`;
+ $('options').innerHTML='';
+ q.options.forEach(option=>{
+   const b=document.createElement('button');
+   b.className='option';
+   const letter=document.createElement('span');
+   letter.className='option-letter';
+   letter.textContent=option.label;
+   const copy=document.createElement('span');
+   copy.className='option-copy';
+   const main=document.createElement('span');
+   main.className='option-main';
+   main.textContent=option.text;
+   copy.appendChild(main);
+   b.appendChild(letter);b.appendChild(copy);
+   b.addEventListener('click',()=>{
+     answers[index]=option.type;
+     if(index<questions.length-1){index++;renderQuestion();}
+     else finish();
+   });
+   $('options').appendChild(b);
+ });
  $('prev').disabled=index===0;
 }
+
 $('start').addEventListener('click',start);$('prev').addEventListener('click',()=>{if(index>0){index--;renderQuestion();}});
-async function finish(){let scores=Object.fromEntries(ids.map(id=>[id,0]));answers.forEach(a=>scores[a]++);let sorted=[...ids].sort((a,b)=>scores[b]-scores[a]);const maxScore=scores[sorted[0]];const tied=sorted.filter(id=>scores[id]===maxScore);let best=tied[0],t=types[best];latest={best,scores,sorted,nickname,grade,at:new Date().toISOString()};$('resultWho').textContent=(nickname?nickname+' 선생님의 ':'나의 ')+ '디지털 놀이 교사 유형';$('resultImage').src=ART[ids.indexOf(best)];$('resultAnimal').textContent=t.animal;$('resultName').textContent=t.name;$('resultLine').textContent=t.line;$('resultDesc').textContent=t.desc;$('resultKeys').innerHTML=t.keys.map(k=>`<span class="chip">#${k}</span>`).join('');$('resultTip').textContent='성장 아이디어 · '+t.tip;$('resultBars').innerHTML=sorted.map(id=>`<div class="barrow"><span>${types[id].emoji} ${types[id].animal.replace('형','')}</span><div class="bar"><i style="width:${scores[id]/questions.length*100}%"></i></div><b>${scores[id]}</b></div>`).join('');let tie=tied.length>1;$('resultNote').textContent=`담당 연령: ${grade} · 응답 ${questions.length}개 완료`+(tie?` · ${tied.map(id=>types[id].animal).join(' · ')} 점수가 같아 대표 유형은 동점 유형 중 하나로 표시했어요. 유형별 점수를 함께 참고해 주세요.`:'')+' · 이 검사는 자기성찰을 위한 참고용이며 표준화된 심리검사는 아니에요.';await saveResult(latest);go('result');}
+async function finish(){let scores=Object.fromEntries(ids.map(id=>[id,0]));answers.forEach(a=>scores[a]++);let sorted=[...ids].sort((a,b)=>scores[b]-scores[a]);const maxScore=scores[sorted[0]];const tied=sorted.filter(id=>scores[id]===maxScore);let best=tied[Math.floor(Math.random()*tied.length)],t=types[best];latest={best,scores,sorted,nickname,grade,at:new Date().toISOString()};$('resultWho').textContent=(nickname?nickname+' 선생님의 ':'나의 ')+ '디지털 놀이 교사 유형';$('resultImage').src=ART[ids.indexOf(best)];$('resultAnimal').textContent=t.animal;$('resultName').textContent=t.name;$('resultLine').textContent=t.line;$('resultDesc').textContent=t.desc;$('resultKeys').innerHTML=t.keys.map(k=>`<span class="chip">#${k}</span>`).join('');$('resultTip').textContent='성장 아이디어 · '+t.tip;$('resultBars').innerHTML=sorted.map(id=>`<div class="barrow"><span>${types[id].emoji} ${types[id].animal.replace('형','')}</span><div class="bar"><i style="width:${scores[id]/questions.length*100}%"></i></div><b>${scores[id]}</b></div>`).join('');let tie=tied.length>1;$('resultNote').textContent=`담당 연령: ${grade} · 응답 ${questions.length}개 완료`+(tie?` · ${tied.map(id=>types[id].animal).join(' · ')} 점수가 같아 대표 유형은 동점 유형 중 하나로 표시했어요. 유형별 점수를 함께 참고해 주세요.`:'')+' · 이 검사는 자기성찰을 위한 참고용이며 표준화된 심리검사는 아니에요.';await saveResult(latest);go('result');}
 
 async function saveResult(r){
  if(!db){
@@ -579,30 +458,7 @@ $('matchBtn').addEventListener('click',()=>{
    </div>`;
 });
 
+$('resetStats').style.display='none';
 $('exportStats').style.display='none';
-
-// 유아용 디지털 생활 탐험: 놀이 흥미·소통·안전·자기조절·실제 놀이 연결을 함께 살펴봄
-const childQuestions=[
- {q:'태블릿이나 카메라로 무엇을 해 보고 싶나요?',scene:'📷',bubble:'찰칵! 내가 발견한 것을 남겨 볼까?',o:[['📷','꽃과 곤충을 찍어 관찰해요'],['🎨','태블릿에 그림을 그리고 꾸며요'],['🎬','친구와 짧은 이야기를 만들어요']]},
- {q:'친구와 함께 디지털 그림책을 만든다면?',scene:'📖',bubble:'우리 함께 이야기를 완성해요!',o:[['🧩','각자 한 장면씩 맡아 만들어요'],['💬','서로 생각을 말하며 정해요'],['🎙️','목소리와 소리를 녹음해요']]},
- {q:'친구 사진을 찍고 싶을 때는 어떻게 할까요?',scene:'📸',bubble:'친구의 마음도 소중해요.',o:[['🙋','먼저 찍어도 되는지 물어봐요'],['🤳','친구와 함께 찍자고 말해요'],['🌼','꽃이나 주변 풍경을 찍어요']]},
- {q:'화면 놀이를 마칠 시간이 되었어요.',scene:'⏰',bubble:'이제 무엇을 해 볼까요?',o:[['⏰','약속한 시간이 되면 멈춰요'],['💾','하던 것을 저장하고 마무리해요'],['🗓️','다음에 이어 할 놀이를 정해요']]},
- {q:'화면에서 신기한 나뭇잎을 보았어요.',scene:'🍃',bubble:'진짜 나뭇잎도 찾아볼까요?',o:[['🌳','밖에 나가 비슷한 잎을 찾아요'],['🔎','사진을 더 크게 살펴봐요'],['🖍️','본 모습을 그림으로 그려요']]},
- {q:'태블릿에서 모르는 것이 나왔어요.',scene:'💡',bubble:'궁금할 때는 어떻게 할까요?',o:[['🙋','선생님이나 친구에게 물어봐요'],['🔍','함께 찾아보며 알아봐요'],['🧪','직접 눌러 보고 살펴봐요']]},
- {q:'친구가 내가 만든 작품을 보고 싶대요.',scene:'🖼️',bubble:'내 작품을 어떻게 나눌까요?',o:[['🤝','친구에게 보여주고 이야기를 들어요'],['🎤','내가 만든 방법을 소개해요'],['👀','친구 작품도 함께 감상해요']]},
- {q:'디지털 놀이가 끝난 뒤 무엇을 하고 싶나요?',scene:'🌈',bubble:'놀이를 이어 가 볼까요?',o:[['🏃','밖에서 뛰고 몸을 움직여요'],['🧱','블록이나 장난감으로 만들어 봐요'],['📚','친구와 책을 보며 이야기해요']]}
-];
-let childIndex=0,childAnswers=[];
-function renderChildQ(){const q=childQuestions[childIndex];$('childQNum').textContent=`${childIndex+1} / ${childQuestions.length}`;$('childPct').textContent=Math.round((childIndex+1)/childQuestions.length*100)+'%';$('childFill').style.width=((childIndex+1)/childQuestions.length*100)+'%';$('childQ').textContent=q.q;$('childScene').innerHTML=`<div class="scene-art"><span class="scene-emoji">${q.scene}</span><span class="scene-bubble">${q.bubble}</span></div>`;$('childOptions').innerHTML='';q.o.forEach((o,i)=>{const b=document.createElement('button');b.className='option child-option';b.innerHTML=`<span class="opt-art">${o[0]}</span><span class="opt-label">${o[1]}</span>`;b.setAttribute('aria-label',o[1]);b.onclick=()=>{childAnswers[childIndex]=i;if(childIndex<childQuestions.length-1){childIndex++;renderChildQ();}else showChildResult();};$('childOptions').appendChild(b);});$('childPrev').disabled=childIndex===0;}
-function childStart(){childIndex=0;childAnswers=[];$('childIntro').style.display='none';$('childResult').style.display='none';$('childQuiz').style.display='block';renderChildQ();}
-function showChildResult(){const first=childAnswers[0]??0;const play=['사진과 관찰 놀이','그림과 꾸미기 놀이','이야기와 영상 만들기'][first];const mascots=['📷','🎨','🎬'];const titles=['찰칵이와 함께하는 관찰·기록 놀이 친구','알록이와 함께하는 그림·상상 놀이 친구','이야기와 함께하는 표현 놀이 친구'];
- const habits=[];if(childAnswers[2]===0||childAnswers[2]===1)habits.push('친구의 마음을 생각하고 먼저 물어보려는 모습이 멋져요.');if(childAnswers[3]===0||childAnswers[3]===1)habits.push('놀이를 마무리하고 약속을 지키려는 모습이 좋아요.');if(childAnswers[5]===0||childAnswers[5]===1)habits.push('모르는 것을 어른이나 친구와 함께 알아보려 해요.');if(childAnswers[6]!==undefined)habits.push('친구와 작품과 생각을 나누는 것을 즐겨요.');
- const promises=[['화면에서 본 것을 밖에서도 찾아볼래요!','화면을 잠시 멈추고 몸놀이도 해 볼래요!'],['친구와 함께 만든 이야기를 서로 소개할래요!','친구 작품도 소중히 보고 칭찬할래요!'],['사진을 찍기 전에 꼭 먼저 물어볼래요!','놀이가 끝나면 약속한 시간에 멈출래요!'],['모르는 것이 생기면 선생님과 함께 찾아볼래요!','디지털 놀이 뒤에는 블록이나 책으로도 놀아볼래요!']];
- let promise=childAnswers[4]===0?promises[0][0]:childAnswers[3]===0?promises[2][1]:childAnswers[2]===0?promises[2][0]:childAnswers[7]===0?promises[0][1]:childAnswers[6]===0?promises[1][0]:promises[3][0];
- $('childMascot').textContent=mascots[first];$('childResultTitle').textContent=titles[first];$('childResultSubtitle').textContent='내가 좋아하는 놀이와 멋진 습관을 발견했어요!';$('childPlay').textContent='나는 '+play+'을(를) 좋아해요. 내가 고른 방법으로 생각을 표현하고 새로운 것을 발견해요.';$('childHabit').textContent=habits.slice(0,2).join(' ')||'궁금한 것을 살펴보고 나에게 맞는 놀이를 골라요.';$('childPromise').textContent=promise;$('childQuiz').style.display='none';$('childResult').style.display='block';}
-$('childStart').addEventListener('click',childStart);$('childPrev').addEventListener('click',()=>{if(childIndex>0){childIndex--;renderChildQ();}});$('childAgain').addEventListener('click',()=>{$('childResult').style.display='none';$('childIntro').style.display='block';});
-$('openAdmin').addEventListener('click',()=>{$('adminPanel').style.display=$('adminPanel').style.display==='none'?'block':'none';});
-$('localReset').addEventListener('click',()=>{if(!confirm('이 브라우저의 임시 검사 진행 상태를 초기화할까요? 공동 현황판 데이터는 삭제되지 않습니다.'))return;index=0;answers=[];latest=null;sessionResults=[];sessionStorage.removeItem('teacherQuizDraft');$('adminMsg').textContent='이 브라우저의 임시 상태를 초기화했어요. 공동 Supabase 데이터는 보존했어요.';});
-
 renderHomeAnimals();renderTypes();
 </script></body></html>

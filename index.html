@@ -75,6 +75,27 @@ footer{text-align:center;color:#8589a7;font-size:12px;padding:25px}
 .quiz-footer{display:flex;justify-content:space-between;gap:12px;border-top:1px solid #dcebea;margin-top:30px;padding-top:17px;color:#648b8d;font-size:12px}
 @media(max-width:600px){.quiz-shell{padding:20px}.quiz-meta{margin-bottom:26px}.option{padding:15px;min-height:80px}.quiz-footer{font-size:11px}}
 
+
+/* 학교급별 원형 유형 비교 */
+.school-donut-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:12px}
+.school-donut-card{border:1px solid #e8e6f2;border-radius:16px;padding:16px;background:#fff}
+.school-donut-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px}
+.school-donut-head b{font-size:15px}
+.school-donut-head span{font-size:12px;color:#8b879d}
+.school-donut-body{display:flex;align-items:center;gap:18px}
+.school-donut{width:142px;height:142px;flex:0 0 142px;border-radius:50%;position:relative;display:grid;place-items:center;background:#eeeaf4}
+.school-donut:after{content:"";position:absolute;width:82px;height:82px;border-radius:50%;background:#fff}
+.school-donut-center{position:relative;z-index:1;text-align:center;line-height:1.25}
+.school-donut-center strong{display:block;font-size:23px;color:#302f50}
+.school-donut-center small{font-size:11px;color:#8b879d}
+.school-donut-legend{display:grid;gap:8px;min-width:0;flex:1}
+.school-donut-legend-item{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px}
+.school-donut-legend-label{display:flex;align-items:center;gap:6px;min-width:0}
+.school-donut-swatch{width:10px;height:10px;border-radius:3px;flex:0 0 10px}
+.school-donut-legend-item b{white-space:nowrap;font-variant-numeric:tabular-nums}
+.school-donut-empty{height:142px;display:grid;place-items:center;color:#9a96a8;font-size:13px}
+@media(max-width:680px){.school-donut-grid{grid-template-columns:1fr}.school-donut-body{gap:14px}.school-donut{width:124px;height:124px;flex-basis:124px}.school-donut:after{width:72px;height:72px}}
+
 </style></head>
 <body>
 <header><div class="head">
@@ -227,7 +248,7 @@ footer{text-align:center;color:#8589a7;font-size:12px;padding:25px}
  <h2 class="section-title">📊 우리들의 유형 현황판</h2><p class="section-sub">여러 선생님이 휴대폰으로 참여한 결과가 한곳에 모이는 공동 현황판이에요.</p><div class="note" id="dbStatus">데이터베이스 연결 설정이 필요해요.</div>
  <div class="statsgrid"><div class="stat"><b id="totalCount">0</b><span>누적 검사 참여</span></div><div class="stat"><b id="topType">-</b><span>가장 많이 나온 유형</span></div><div class="stat"><b id="schoolCount">0</b><span>참여 학교급</span></div></div>
  <div class="subpanel"><h3>전체 디지털 놀이교사 유형 분포도</h3><div id="statsBars"><p class="muted">검사 결과가 모이면 다섯 가지 디지털 놀이교사 유형별 인원과 비율이 표시돼요.</p></div></div>
- <div class="subpanel" style="margin-top:15px"><h3>🏫 학교급별 유형 비교</h3><p class="muted">유치원 · 초등학교 · 특수교육 · 기타 선생님들의 동물 유형 분포를 비교해요. 기존 특수/기타 기록은 별도로 표시해요.</p><div id="schoolCompare"></div></div>
+ <div class="subpanel" style="margin-top:15px"><h3>🏫 학교급별 유형 비교</h3><p class="muted">유치원 · 초등학교 · 특수교육 · 기타 선생님들의 동물 유형 분포를 원형그래프로 비교해요.</p><div id="schoolCompare"></div></div>
  <div class="note">이름이나 연락처는 저장하지 않으며, 학교급·대표 유형·유형별 점수만 익명으로 저장해요.</div>
  <div class="result-actions no-print"><button class="ghost" id="exportStats">현황 CSV 내려받기</button><button class="ghost" id="resetStats">이 기기 기록 초기화</button></div>
 </div></section>
@@ -348,6 +369,28 @@ async function saveResult(r){
    return false;
  }
 }
+function renderSchoolDonuts(bySchool){
+ const schools=['유치원','초등학교','특수교육','기타'];
+ const palette=['#2fbf9f','#6f70d8','#f2a65a','#e8799a','#7d9bd8'];
+ $('schoolCompare').innerHTML='<div class="school-donut-grid">'+schools.map(s=>{
+   const row=bySchool[s]||{};
+   const vals=ids.map(id=>Number(row[id]||0));
+   const n=vals.reduce((a,b)=>a+b,0);
+   let cursor=0;
+   const stops=[];
+   vals.forEach((v,i)=>{
+     if(v>0){
+       const from=n?cursor/n*100:0;
+       cursor+=v;
+       const to=n?cursor/n*100:0;
+       stops.push(`${palette[i]} ${from}% ${to}%`);
+     }
+   });
+   const gradient=n?`conic-gradient(${stops.join(',')})`:'#eeeaf4';
+   const legend=ids.map((id,i)=>`<div class="school-donut-legend-item"><span class="school-donut-legend-label"><i class="school-donut-swatch" style="background:${palette[i]}"></i>${types[id].emoji} ${types[id].animal.replace('형','')}</span><b>${vals[i]}명 · ${n?Math.round(vals[i]/n*100):0}%</b></div>`).join('');
+   return `<article class="school-donut-card"><div class="school-donut-head"><b>${s}</b><span>참여 ${n}명</span></div>${n?`<div class="school-donut-body"><div class="school-donut" style="background:${gradient}"><div class="school-donut-center"><strong>${n}</strong><small>명 참여</small></div></div><div class="school-donut-legend">${legend}</div></div>`:`<div class="school-donut-empty">아직 참여 결과가 없어요.</div>`}</article>`;
+ }).join('')+'</div>';
+}
 async function renderStats(){
  if(!db){
    $('dbStatus').textContent='Supabase 연결 설정이 없어 공동 통계를 불러올 수 없어요.';
@@ -360,24 +403,18 @@ async function renderStats(){
    if(error) throw error;
    const counts=data?.type_counts||{};
    const bySchool=data?.school_counts||{};
-   const schools=['유치원','초등학교','특수교육','기타','특수/기타'];
+   const schools=['유치원','초등학교','특수교육','기타'];
    const total=ids.reduce((n,id)=>n+Number(counts[id]||0),0);
    const top=[...ids].sort((a,b)=>Number(counts[b]||0)-Number(counts[a]||0))[0];
    $('totalCount').textContent=total;
    $('topType').textContent=total?types[top].emoji+' '+types[top].animal:'아직 없음';
-   $('schoolCount').textContent=schools.slice(0,4).filter(s=>Number((bySchool[s]||{})._total||0)>0).length+'/4';
+   $('schoolCount').textContent=schools.filter(s=>Number((bySchool[s]||{})._total||0)>0).length+'/4';
    $('statsBars').className='dist-list';
    $('statsBars').innerHTML=ids.map((id,i)=>{
      const n=Number(counts[id]||0), pct=total?Math.round(n/total*100):0;
      return `<div class="dist-item"><div class="dist-emoji">${types[id].emoji}</div><div class="dist-name">${types[id].animal}</div><div class="dist-track"><div class="dist-fill" style="width:${pct}%"></div></div><div class="dist-value"><strong>${n}</strong>명 · ${pct}%</div></div>`;
    }).join('')+`<div class="dist-foot"><span>전체 참여 ${total}명 기준</span><span>디지털 놀이교사 유형별 참여 인원과 비율</span></div>`;
-   $('schoolCompare').innerHTML=schools.map(s=>{
-     const row=bySchool[s]||{}, n=Number(row._total||0);
-     const label=s==='특수/기타'?'기존 기록(특수/기타)':s;
-     return `<div style="padding:13px 0;border-top:1px solid #eceaf7"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:9px"><b>${label}</b><span class="muted">참여 ${n}명</span></div>`+
-       ids.map(id=>{const v=Number(row[id]||0),p=n?Math.round(v/n*100):0;return `<div class="barrow"><span>${types[id].emoji} ${types[id].animal.replace('형','')}</span><div class="bar"><i style="width:${p}%;background:linear-gradient(90deg,#b9f0dc,#7168d9)"></i></div><b>${v}명 (${p}%)</b></div>`;}).join('')+
-       (n?'':`<p class="muted">아직 참여 결과가 없어요.</p>`)+`</div>`;
-   }).join('');
+   renderSchoolDonuts(bySchool);
    $('dbStatus').textContent='연결 완료 · 여러 기기의 익명 검사 결과를 함께 집계하고 있어요.';
  }catch(error){
    $('dbStatus').textContent=`통계 불러오기 실패 (${error.code||'오류'}): ${error.message||error}. Supabase SQL 함수와 권한 설정을 확인해 주세요.`;
@@ -386,14 +423,14 @@ async function renderStats(){
 }
 function renderLocalStats(all){
  let counts=Object.fromEntries(ids.map(id=>[id,0]));
- const schools=['유치원','초등학교','특수교육','기타','특수/기타'];
+ const schools=['유치원','초등학교','특수교육','기타'];
  const bySchool=Object.fromEntries(schools.map(s=>[s,Object.fromEntries(ids.map(id=>[id,0]))]));
  all.forEach(r=>{counts[r.best]=(counts[r.best]||0)+1;if(bySchool[r.grade])bySchool[r.grade][r.best]++;});
  let top=[...ids].sort((a,b)=>counts[b]-counts[a])[0];
  $('totalCount').textContent=all.length;$('topType').textContent=all.length?types[top].emoji+' '+types[top].animal:'-';
- $('schoolCount').textContent=new Set(all.map(x=>x.grade).filter(g=>['유치원','초등학교','특수교육','기타'].includes(g))).size+'/4';
+ $('schoolCount').textContent=new Set(all.map(x=>x.grade).filter(g=>schools.includes(g))).size+'/4';
  $('statsBars').innerHTML=ids.map(id=>`<div class="barrow"><span>${types[id].emoji} ${types[id].animal}</span><div class="bar"><i style="width:${all.length?counts[id]/all.length*100:0}%"></i></div><b>${counts[id]}</b></div>`).join('');
- $('schoolCompare').innerHTML=schools.map(s=>{let n=Object.values(bySchool[s]).reduce((a,b)=>a+b,0);const label=s==='특수/기타'?'기존 기록(특수/기타)':s;return `<div style="padding:13px 0;border-top:1px solid #eceaf7"><b>${label}</b> · 참여 ${n}명</div>`}).join('');
+ renderSchoolDonuts(bySchool);
 }
 
 // 맞춤 수업 영감 버튼: 학교급과 교사 유형에 맞는 추천 활동을 화면에 표시
